@@ -8,4 +8,4 @@ from django.views.generic import ListView
 
 def index(request):
     context ={}
-    return render(request,'home/templates/index.html', context)
+    return render(request,'index.html', context)
