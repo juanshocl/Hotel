@@ -1,0 +1,36 @@
+{% extends 'list.html' %} {% block columns %}
+<tr>
+  <th scope="col">#</th>
+  <th scope="col">Rut</th>
+  <th scope="col">Nombre</th>
+  <th scope="col">Apellido</th>
+  <th scope="col">Dirección</th>
+  <th scope="col">Telefono</th>
+  <th scope="col">Email</th>
+  <th scope="col">Nacionalidad</th>
+  <th scope="col">Opciones</th>
+</tr>
+{% endblock columns %} 
+{% block rows %} 
+
+        {% for c in object_list%}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{c.Rut}}</td>
+          <td>{{c.Name}}</td>
+          <td>{{c.LastName}}</td>
+          <td>{{c.Address}}</td>
+          <td>{{c.Phone}}</td>
+          <td>{{c.Email}}</td>
+          <td>{{c.Nationality}}</td>
+          <td>
+            <button type="button" class="btn btn-warning btn-xs btn-flat">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button type="button" class="btn btn-danger btn-xs btn-flat">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+        {% endfor%}
+{% endblock rows %} 
