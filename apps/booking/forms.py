@@ -3,8 +3,7 @@ from datetime import datetime
 from django import forms
 from django.forms import ModelForm
 
-#from core.erp.models import Category, Product, Client, Sale
-from apps.booking.models import Client
+from apps.booking.models import *
 
 
 # class CategoryForm(ModelForm):
@@ -82,10 +81,6 @@ from apps.booking.models import Client
 
 
 class ClientForm(ModelForm):
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields['names'].widget.attrs['autofocus'] = True
-
     class Meta:
         model = Client
         fields = '__all__'
@@ -126,6 +121,271 @@ class ClientForm(ModelForm):
                 }
             )
         }
+
+class HotelForm(forms.Form):
+    Name = forms.CharField(label ="Nombre", max_length=50,
+    widget=forms.TextInput(
+                attrs={
+                     'placeholder': 'Nombre',
+              }))
+    Rut = forms.CharField(label ="Rut", max_length=50,
+    widget= forms.TextInput(
+                 attrs={
+                     'placeholder': 'Rut',
+                }
+             ))
+    Address = forms.CharField(label ="Dirección", max_length=50,
+    widget=forms.TextInput(
+                 attrs={
+                     'placeholder': 'Ingrese su dirección',
+                 }
+             ))
+    Rooms = forms.IntegerField(required=False)
+    Descriptions = forms.CharField(label ="Descripción", max_length=50,
+    widget=forms.TextInput(
+                 attrs={
+                     'placeholder': 'Descripción',
+                 }
+             ))
+
+
+    UserId = forms.ModelChoiceField(queryset=UserProfile.objects.all(), widget=forms.Select(attrs={
+    'class': 'form-control select2',
+    'style': 'width: 100%'
+    }))
+
+    
+
+# class HotelForm(ModelForm):
+#     class Meta:
+#         model = Hotels
+#         fields = '__all__'
+#         widgets = {
+#             'Name': forms.TextInput(
+#                 attrs={
+#                     'placeholder': 'Nombre',
+#                 }
+#             ),
+#             'Rut': forms.TextInput(
+#                 attrs={
+#                     'placeholder': 'Rut',
+#                 }
+#             ),
+#             'Address': forms.TextInput(
+#                 attrs={
+#                     'placeholder': 'Ingrese su dirección',
+#                 }
+#             ),
+#             'Rooms': forms.TextInput(
+#                 attrs={
+#                     'placeholder': 'Habitaciones',
+#                 }
+#             ),
+#             'Descriptions': forms.TextInput(
+#                 attrs={
+#                     'placeholder': 'Descripción',
+#                 }
+#             ),
+#             'UserId': forms.Select(
+#                 attrs={
+#                     'class': 'form-control',
+#                     'placeholder': 'Administrador',
+#                 }
+#             )
+#         }
+
+class RoomsTypeForm(ModelForm):
+    class Meta:
+        model = RoomsType
+        fields = '__all__'
+        widgets = {
+            'RoomsDescription': forms.TextInput(
+                attrs={
+                    'placeholder': 'Descrición Habitación',
+                }
+            )
+        }
+
+class FeatureForm(forms.Form):
+    Element = forms.CharField(label ="Elemento", max_length=50, 
+    widget= forms.TextInput(
+                 attrs={
+                     'placeholder': 'Elemento',
+                 }
+             )
+    )
+    Quantity = forms.IntegerField(required=True)
+    RoomsId = forms.ModelChoiceField(queryset=Rooms.objects.all(), widget=forms.Select(attrs={
+    'class': 'form-control select2',
+    'style': 'width: 100%'
+    }))
+
+
+
+
+
+# class FeaturesForm(ModelForm):
+#     class Meta:
+#         model = Features
+#         fields = '__all__'
+#         widgets = {
+#             'Element': forms.TextInput(
+#                 attrs={
+#                     'placeholder': 'Elemento',
+#                 }
+#             ),
+#             'Quantity': forms.TextInput(
+#                 attrs={
+#                     'placeholder': 'Cantidad',
+#                 }
+#             ),
+
+#         }
+ 
+class RoomsForm(forms.Form):
+    RoomsCapacity = forms.IntegerField(required=True,label ="Capacidad"
+    , 
+    widget= forms.TextInput(
+                 attrs={
+                     'placeholder': 'Capacidad',
+                 }
+             )
+    )
+    HotelId = forms.ModelChoiceField(queryset=Hotels.objects.all(), widget=forms.Select(attrs={
+    'class': 'form-control select2',
+    'style': 'width: 100%'
+    }))
+    RoomsPrice = forms.IntegerField(required=True,label ="Precio Habitacion",  
+    widget= forms.TextInput(
+                 attrs={
+                     'placeholder': 'Precio Habitacion',
+                 }
+             )
+    )
+    RoomsIs_active = forms.BooleanField(required=True,label ="Habitacion activa?")
+    FeaturesId = forms.ModelMultipleChoiceField(queryset=Features.objects.all(), widget=forms.Select(attrs={
+    'class': 'form-control select2',
+    'style': 'width: 100%'
+    }))
+    RoomsTypeId = forms.ModelChoiceField(queryset=RoomsType.objects.all(), widget=forms.Select(attrs={
+    'class': 'form-control select2',
+    'style': 'width: 100%'
+    }))
+
+# class RoomsForm(ModelForm):
+#     class Meta:
+#         model = Rooms
+#         fields = '__all__'
+#         widgets = {
+#             'RoomsCapacity': forms.TextInput(
+#                 attrs={
+#                     'placeholder': 'Capacidad de habitación',
+#                 }
+#             ),
+#             'RoomsPrice': forms.TextInput(
+#                 attrs={
+#                     'placeholder': 'Precio Habitacion',
+#                 }
+#             ),
+#             'RoomsIs_active': forms.CheckboxInput(
+#             )
+#         }
+
+class PaymentMethodForm(ModelForm):
+    class Meta:
+        model = PaymentMethod
+        fields = '__all__'
+        widgets = {
+            'PaymentMethodDescription': forms.TextInput(
+                attrs={
+                    'placeholder': 'Nombre',
+                }
+            )
+        }
+
+
+class PaymentForm(ModelForm):
+    class Meta:
+        model = Payment
+        fields = '__all__'
+        widgets = {
+            'Mount': forms.TextInput(
+                attrs={
+                    'placeholder': 'Monto',
+                }
+            ),
+            'Date': forms.TextInput(
+                attrs={
+                    'placeholder': 'Fecha',
+                }
+            )
+        }
+
+
+class BookingForm(ModelForm):
+    class Meta:
+        model = Booking
+        fields = '__all__'
+        widgets = {
+            'DateCheckIn': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs={
+                    'value': datetime.now().strftime('%Y-%m-%d'),
+                }
+            ),
+            'TimeCheckIn': forms.TimeInput(
+                attrs={
+                    'placeholder': 'Hora Checkin',
+                }
+            ),
+            'DateCheckOut': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs={
+                    'value': datetime.now().strftime('%Y-%m-%d'),
+                }
+            ),
+            'TimeCheckOut': forms.TimeInput(
+                attrs={
+                    'placeholder': 'Hora CheckOut',
+                }
+            ),
+            'Prepaid': forms.CheckboxInput(
+            ),
+            'AubscriberMount': forms.TextInput(
+                attrs={
+                    'placeholder': 'Monto pendiente',
+                }
+            ),
+            'Is_Active': forms.CheckboxInput(
+            )
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     # def save(self, commit=True):
@@ -173,7 +433,7 @@ class ClientForm(ModelForm):
 
 #     products = forms.ModelChoiceField(queryset=Product.objects.none(), widget=forms.Select(attrs={
 #         'class': 'form-control select2',
-#         'style': 'width: 100%'
+#         'style': 'width: 100%'z
 #     }))
 
 #     # search = CharField(widget=TextInput(attrs={

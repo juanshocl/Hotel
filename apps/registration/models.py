@@ -8,3 +8,6 @@ class UserProfile(models.Model):
     LastName =  models.CharField(max_length=50, default=None)
     Address =  models.CharField(max_length=50, default=None)
     Email =   models.CharField(max_length=50, default=None)
+
+    def __str__(self):
+        return (self.Name +' '+self.LastName)

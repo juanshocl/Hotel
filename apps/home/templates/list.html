@@ -1,14 +1,15 @@
 {% extends 'body.html' %} 
 {% load static%} 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'plugins/datatables-1.10.23/css/dataTables.bootstrap4.min.css' %}"/>
+    
+    <link rel="stylesheet" href="{% static 'plugins/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'plugins/datatables-1.10.23/plugins/responsive-2.2.7/css/responsive.bootstrap4.min.css' %}"/>
     <script src="{% static 'plugins/datatables-1.10.23/js/jquery.dataTables.js' %}"></script>
     <script src="{% static 'plugins/datatables-1.10.23/js/dataTables.bootstrap4.min.js' %}"></script>
     <script src="{% static 'plugins/datatables-1.10.23/plugins/responsive-2.2.7/js/dataTables.responsive.min.js' %}"></script>
-    <script src="{% static 'plugins/datatables-1.10.23/plugins/responsive-2.2.7/js/responsive.bootstrap4.min.js' %}"></script>
-{% endblock head %}
+    <script src="{% static 'plugins/datatables-1.10.23/plugins/responsive-2.2.7/js/responsive.bootstrap4.min.js' %}"></script> 
 
+{% endblock head %}
 {% block content %}
 
 <div class="card card-default">
@@ -20,7 +21,7 @@
   </div>
   <!-- /.card-header -->
   <div class="card-body">
-    <table class="table">
+    <table class="table" id="data">
       <thead>
       {% block columns %}
 
@@ -35,10 +36,26 @@
     </table>
   </div>
   <div class="card-footer">
-    <button class="btn-primary btn-flat">
+    <button class="btn-primary btn-flat" onclick="location.href='{% url 'ClientCreate'%}'" type="button">
       <i class="fas fa-plus"></i> Nuevo registro
     </button>
   </div>
 </div>
 
-{% endblock content %}
+
+
+{% endblock content %} 
+{% block javascript %}
+    <script type="application/javascript">
+        $(function () {
+            $('#data').DataTable({
+                responsive: true,
+                autoWidth: false,
+                "language": {
+                    url : '{% static 'plugins/datatables-1.10.20/spanish.txt' %}'
+                }
+            });
+        }); 
+
+    </script>
+{% endblock %}
