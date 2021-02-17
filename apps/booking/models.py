@@ -43,8 +43,8 @@ class Rooms(models.Model):
     FeaturesId = models.ManyToManyField(Features)
     # FeaturesId = models.ForeignKey('Features', on_delete=models.CASCADE, default = None)
 
-    def __str__(self):
-        return self.RoomsName +' / ' + str(self.Id)
+    # def __str__(self):
+    #     return self.RoomsName +' / ' + str(self.Id)
 
 # class Category(models.Model):
 #     Id = models.UUIDField(primary_key=True, verbose_name="ID",default=uuid.uuid4, editable=False)
@@ -101,11 +101,11 @@ class Booking(models.Model):
     #test = models.CharField(max_length = 50, default=None)
     Prepaid = models.BooleanField(verbose_name="Prepagado",
     default=None)
-    AubscriberMount = models.IntegerField(verbose_name="Monto PendienteS", default=None)
+    AubscriberMount = models.IntegerField(verbose_name="Monto Pendiente", default=None)
     #PaymentId = models.ForeignKey('Payment', on_delete=models.CASCADE, default=None)
     Is_Active = models.BooleanField
     BookingClientId = models.ForeignKey('Client', on_delete=models.CASCADE) 
-    HotelsId = models.ForeignKey('Hotels', on_delete=models.CASCADE, default=None)
+    HotelsId = models.ForeignKey('Hotels', on_delete=models.CASCADE, default=None, verbose_name="Hotel")
 
     def __str__(self):
         return (self.BookingClientId.Name+' '+ self.BookingClientId.LastName + ' ChechIn + : ' + str(self.DateCheckIn) +' CheckOut - : '+ str(self.DateCheckOut))

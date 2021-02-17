@@ -1,3 +1,4 @@
+from apps.contact.models import Contact
 from django.contrib import admin
 from apps.booking.models import *
 
@@ -11,6 +12,8 @@ admin.site.register(Rooms)
 admin.site.register(PaymentMethod)
 admin.site.register(Client)
 admin.site.register(Payment)
+admin.site.register(Contact)
+
 # admin.site.register(Publication)
 # admin.site.register(Article)
 

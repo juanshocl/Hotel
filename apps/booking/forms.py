@@ -1,9 +1,12 @@
 from datetime import datetime
 
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm, Form, ModelChoiceField
+from django.forms.widgets import Select
 
 from apps.booking.models import *
+from apps.registration.models import UserProfile
+
 
 
 # class CategoryForm(ModelForm):
@@ -122,37 +125,78 @@ class ClientForm(ModelForm):
             )
         }
 
-class HotelForm(forms.Form):
-    Name = forms.CharField(label ="Nombre", max_length=50,
-    widget=forms.TextInput(
+class HotelForm(ModelForm):
+    class Meta:
+        model = Hotels
+        fields = '__all__'
+        labels = {
+            'UserId': ('Administrador'),
+        }
+        widgets = {
+            'Name': forms.TextInput(
                 attrs={
                      'placeholder': 'Nombre',
-              }))
-    Rut = forms.CharField(label ="Rut", max_length=50,
-    widget= forms.TextInput(
+              }),
+            'Rut': forms.TextInput(
                  attrs={
                      'placeholder': 'Rut',
                 }
-             ))
-    Address = forms.CharField(label ="Dirección", max_length=50,
-    widget=forms.TextInput(
+             ),
+            'Address': forms.TextInput(
                  attrs={
                      'placeholder': 'Ingrese su dirección',
                  }
-             ))
-    Rooms = forms.IntegerField(required=False)
-    Descriptions = forms.CharField(label ="Descripción", max_length=50,
-    widget=forms.TextInput(
+             ),
+            'Rooms': forms.TextInput(
                  attrs={
-                     'placeholder': 'Descripción',
+                     'placeholder': 'Cantidad de habitaciones',
                  }
-             ))
+             ),
+            'Descriptions': forms.TextInput( 
+                attrs={
+                     'placeholder': 'Descripción',
+                 }),
+            'UserId': 
+            Select(attrs={
+                'class': 'form-control select2',
+                'style': 'width: 50%'
+                }),
+
+        }
+
+# class HotelForm(Form):
+#     Name = forms.CharField(label ="Nombre", max_length=50,
+#     widget=forms.TextInput(
+#                 attrs={
+#                      'placeholder': 'Nombre',
+#               }))
+#     Rut = forms.CharField(label ="Rut", max_length=50,
+#     widget= forms.TextInput(
+#                  attrs={
+#                      'placeholder': 'Rut',
+#                 }
+#              ))
+#     Address = forms.CharField(label ="Dirección", max_length=50,
+#     widget=forms.TextInput(
+#                  attrs={
+#                      'placeholder': 'Ingrese su dirección',
+#                  }
+#              ))
+#     Rooms = forms.IntegerField(required=False)
+#     Descriptions = forms.CharField(label ="Descripción", max_length=50,
+#     widget=forms.TextInput(
+#                  attrs={
+#                      'placeholder': 'Descripción',
+#                  }
+#              ))
 
 
-    UserId = forms.ModelChoiceField(queryset=UserProfile.objects.all(), widget=forms.Select(attrs={
-    'class': 'form-control select2',
-    'style': 'width: 100%'
-    }))
+#     UserId = forms.ModelChoiceField(queryset=UserProfile.objects.all()
+#     , widget=Select(attrs={
+#     'class': 'form-control select2',
+#     'style': 'width: 100%'
+#     })
+#     )
 
     
 
@@ -206,19 +250,31 @@ class RoomsTypeForm(ModelForm):
             )
         }
 
-class FeatureForm(forms.Form):
-    Element = forms.CharField(label ="Elemento", max_length=50, 
-    widget= forms.TextInput(
+class FeatureForm(ModelForm):
+    class Meta:
+        model = Features
+        fields = '__all__'
+        labels = {
+            'Element': ('Elemento'),
+            'Quantity': ('Cantidad'),
+            'RoomsId': ('Habitacion'),
+        }
+        widgets = {
+            'Element': forms.TextInput(
                  attrs={
                      'placeholder': 'Elemento',
+                 }),
+            'Quantity': forms.TextInput(
+                                 attrs={
+                     'placeholder': 'Cantidad',
                  }
-             )
-    )
-    Quantity = forms.IntegerField(required=True)
-    RoomsId = forms.ModelChoiceField(queryset=Rooms.objects.all(), widget=forms.Select(attrs={
-    'class': 'form-control select2',
-    'style': 'width: 100%'
-    }))
+            ),
+            # 'RoomsId': forms.Select(attrs={
+            #     'class': 'form-control select2',
+            #     'style': 'width: 100%'
+            #     }),
+        }
+
 
 
 
@@ -242,54 +298,76 @@ class FeatureForm(forms.Form):
 
 #         }
  
-class RoomsForm(forms.Form):
-    RoomsCapacity = forms.IntegerField(required=True,label ="Capacidad"
-    , 
-    widget= forms.TextInput(
-                 attrs={
-                     'placeholder': 'Capacidad',
-                 }
-             )
-    )
-    HotelId = forms.ModelChoiceField(queryset=Hotels.objects.all(), widget=forms.Select(attrs={
-    'class': 'form-control select2',
-    'style': 'width: 100%'
-    }))
-    RoomsPrice = forms.IntegerField(required=True,label ="Precio Habitacion",  
-    widget= forms.TextInput(
-                 attrs={
-                     'placeholder': 'Precio Habitacion',
-                 }
-             )
-    )
-    RoomsIs_active = forms.BooleanField(required=True,label ="Habitacion activa?")
-    FeaturesId = forms.ModelMultipleChoiceField(queryset=Features.objects.all(), widget=forms.Select(attrs={
-    'class': 'form-control select2',
-    'style': 'width: 100%'
-    }))
-    RoomsTypeId = forms.ModelChoiceField(queryset=RoomsType.objects.all(), widget=forms.Select(attrs={
-    'class': 'form-control select2',
-    'style': 'width: 100%'
-    }))
+# class RoomsForm(Form):
+#     RoomsCapacity = forms.IntegerField(
+#         required=True
+#     ,label ="Capacidad"
+#     , 
+#     widget= forms.TextInput(
+#                  attrs={
+#                      'placeholder': 'Capacidad',
+#                  }
+#              )
+#     )
+#     HotelId = forms.ModelChoiceField(queryset=Hotels.objects.all(), widget=forms.Select(attrs={
+#     'class': 'form-control select2',
+#     'style': 'width: 100%'
+#     }))
 
-# class RoomsForm(ModelForm):
-#     class Meta:
-#         model = Rooms
-#         fields = '__all__'
-#         widgets = {
-#             'RoomsCapacity': forms.TextInput(
-#                 attrs={
-#                     'placeholder': 'Capacidad de habitación',
-#                 }
-#             ),
-#             'RoomsPrice': forms.TextInput(
-#                 attrs={
-#                     'placeholder': 'Precio Habitacion',
-#                 }
-#             ),
-#             'RoomsIs_active': forms.CheckboxInput(
-#             )
-#         }
+#     RoomsPrice = forms.IntegerField(required=True
+#     #,label ="Precio Habitacion"
+#     # ,  
+#     # widget= forms.TextInput(
+#     #              attrs={
+#     #                  'placeholder': 'Precio Habitacion',
+#     #              }
+#     #          )
+#     )
+#     RoomsIs_active = forms.BooleanField(required=True,label ="Habitacion activa?")
+#     FeaturesId = forms.ModelMultipleChoiceField(queryset=Features.objects.all(), widget=forms.Select(attrs={
+#     'class': 'form-control select2',
+#     'style': 'width: 100%'
+#     }))
+#     RoomsTypeId = forms.ModelChoiceField(queryset=RoomsType.objects.all(), widget=forms.Select(attrs={
+#     'class': 'form-control select2',
+#     'style': 'width: 100%'
+#     }))
+
+class RoomsForm(ModelForm):
+    class Meta:
+        model = Rooms
+        fields = '__all__'
+        labels = {
+            'HotelId': ('Hotel'),
+            'RoomsCapacity': ('Capacidad'),
+            'RoomsName': ('Nombre Habitacion'),
+            'RoomsPrice': ('Precio'),
+            'RoomsIs_active': ('Esta operativa'),
+            'RoomsTypeId': ('Tipo de habitacion'),
+            'FeaturesId': ('Contiene'),
+            
+        }
+        widgets = {
+            'RoomsCapacity': forms.TextInput(
+                attrs={
+                    'placeholder': 'Capacidad de habitación',
+                }
+            ),
+            'RoomsPrice': forms.TextInput(
+                attrs={
+                    'placeholder': 'Precio Habitacion',
+                }
+            ),
+            'RoomsIs_active': forms.CheckboxInput(
+            ),      
+            'FeaturesId': forms.SelectMultiple(
+                # queryset=Features.objects.all(),
+                attrs={
+                'class': 'form-control select2',
+                'style': 'width: 50%',
+                }
+            )
+        }
 
 class PaymentMethodForm(ModelForm):
     class Meta:
@@ -308,17 +386,23 @@ class PaymentForm(ModelForm):
     class Meta:
         model = Payment
         fields = '__all__'
+        labels = {
+            'IdHotel': 'Hotel',
+            'Mount' : 'Monto',
+            'IdBook': 'Reserva',
+            'PaymentMethodId' : 'Forma de pago',
+        }
         widgets = {
             'Mount': forms.TextInput(
                 attrs={
                     'placeholder': 'Monto',
                 }
             ),
-            'Date': forms.TextInput(
-                attrs={
-                    'placeholder': 'Fecha',
-                }
-            )
+            # 'Date': forms.DateInput(
+            #     attrs={
+            #         'placeholder': 'Fecha',
+            #     }
+            # )
         }
 
 
@@ -326,23 +410,29 @@ class BookingForm(ModelForm):
     class Meta:
         model = Booking
         fields = '__all__'
+        labels = {
+            'DateCheckIn': 'Fecha CheckIn',
+            'HotelsId': 'Hotel',
+            'BookingClientId': 'Cliente'
+
+        }
         widgets = {
-            'DateCheckIn': forms.DateInput(
-                format='%Y-%m-%d',
-                attrs={
-                    'value': datetime.now().strftime('%Y-%m-%d'),
-                }
+            'DateCheckIn': forms.SelectDateWidget(
+                # format='%d-%m-%Y',
+                # attrs={
+                #     'value': datetime.now().strftime('%d-%m-%Y'),
+                # }
             ),
             'TimeCheckIn': forms.TimeInput(
                 attrs={
                     'placeholder': 'Hora Checkin',
                 }
             ),
-            'DateCheckOut': forms.DateInput(
-                format='%Y-%m-%d',
-                attrs={
-                    'value': datetime.now().strftime('%Y-%m-%d'),
-                }
+            'DateCheckOut': forms.SelectDateWidget(
+                # format='%Y-%m-%d',
+                # attrs={
+                #     'value': datetime.now().strftime('%d-%m-%Y'),
+                # }
             ),
             'TimeCheckOut': forms.TimeInput(
                 attrs={
@@ -357,6 +447,11 @@ class BookingForm(ModelForm):
                 }
             ),
             'Is_Active': forms.CheckboxInput(
+            ),
+            'HotelsId': forms.Select(
+                # attrs={
+                #     'placeholder': 'Monto pendiente',
+                # }
             )
         }
 

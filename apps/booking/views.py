@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from apps.booking.models import Client
+from apps.booking.models import *
 from apps.booking.forms import *
 from django.urls import reverse_lazy
 from django.http import JsonResponse
@@ -90,7 +90,7 @@ class ClientsCreateView(CreateView):
 class BookingCreateView(CreateView):
     model = Booking
     form_class = BookingForm
-    template_name = 'Booking/bookingAdd.html'
+    template_name = 'Add.html'
     success_url = reverse_lazy('ClientList')
     
 
@@ -119,7 +119,7 @@ class BookingCreateView(CreateView):
 class PaymentCreateView(CreateView):
     model = Payment
     form_class = PaymentForm
-    template_name = 'Payment.html'
+    template_name = 'Add.html'
     success_url = reverse_lazy('ClientList')
     
 
@@ -141,14 +141,14 @@ class PaymentCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Creación de reservas'
+        context['title'] = 'Creación de metodo de pago'
         return context
 
 # Quedamos hasta acá #######
 class PaymentmethodCreateView(CreateView):
-    model = Booking
-    form_class = BookingForm
-    template_name = 'Booking/bookingAdd.html'
+    model = PaymentMethod
+    form_class = PaymentMethodForm
+    template_name = 'Add.html'
     success_url = reverse_lazy('ClientList')
     
 
@@ -170,18 +170,46 @@ class PaymentmethodCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Creación de reservas'
+        context['title'] = 'Creación de metodo de pago'
         return context
         
+# class RoomsCreateView(CreateView):
+#     model = Rooms
+#     form_class = RoomsForm
+#     template_name = 'Add.html'
+#     success_url = reverse_lazy('ClientList')
+    
+
+#     def dispatch(self, request, *args, **kwargs):
+#         return super().dispatch(request, *args, **kwargs)
+
+#     # def post(self, request, *args, **kwargs):
+#     #     data = {}
+#     #     try:
+#     #         action = request.POST['action']
+#     #         if action == 'add':
+#     #             form = self.get_form()
+#     #             data = form.save()
+#     #         else:
+#     #             data['error'] = 'No ha ingresado a ninguna opción'
+#     #     except Exception as e:
+#     #         data['error'] = str(e)
+#     #     return JsonResponse(data)
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = 'Creación de Habitaciones'
+#         return context
+
 class RoomsCreateView(CreateView):
-    model = Booking
-    form_class = BookingForm
-    template_name = 'Booking/bookingAdd.html'
+    model = Rooms
+    form_class = RoomsForm
+    template_name = 'Add.html'
     success_url = reverse_lazy('ClientList')
     
 
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+    # def dispatch(self, request, *args, **kwargs):
+    #     return super().dispatch(request, *args, **kwargs)
 
     # def post(self, request, *args, **kwargs):
     #     data = {}
@@ -198,13 +226,13 @@ class RoomsCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Creación de reservas'
+        context['title'] = 'Creación de Caracteristicas'
         return context
 
 class FeatureCreateView(CreateView):
-    model = Booking
-    form_class = BookingForm
-    template_name = 'Booking/bookingAdd.html'
+    model = Features
+    form_class = FeatureForm
+    template_name = 'Add.html'
     success_url = reverse_lazy('ClientList')
     
 
@@ -226,13 +254,13 @@ class FeatureCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Creación de reservas'
+        context['title'] = 'Creación de Caracteristicas'
         return context
 
 class RoomstypeCreateView(CreateView):
-    model = Booking
-    form_class = BookingForm
-    template_name = 'Booking/bookingAdd.html'
+    model = RoomsType
+    form_class = RoomsTypeForm
+    template_name = 'Add.html'
     success_url = reverse_lazy('ClientList')
     
 
@@ -254,13 +282,13 @@ class RoomstypeCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Creación de reservas'
+        context['title'] = 'Creación de Tipos de habitacionS'
         return context
 
 class HotelCreateView(CreateView):
-    model = Booking
-    form_class = BookingForm
-    template_name = 'Booking/bookingAdd.html'
+    model = Hotels
+    form_class = HotelForm
+    template_name = 'Add.html'
     success_url = reverse_lazy('ClientList')
     
 
@@ -282,7 +310,7 @@ class HotelCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Creación de reservas'
+        context['title'] = 'Creación de Hoteles'
         return context
 
 
