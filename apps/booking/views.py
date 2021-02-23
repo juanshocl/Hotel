@@ -6,9 +6,37 @@ from django.urls import reverse_lazy
 from django.http import JsonResponse
 
 # Create your views here.
-def bookingHome(request):
-    context ={}
-    return render(request,'booking.html', context)
+# def bookingHome(request):
+#     context ={}
+#     return render(request,'booking.html', context)
+
+class bookingHome(CreateView):
+    model = Booking
+    form_class = BookingForm
+    template_name = 'booking.html'
+    success_url = reverse_lazy('bookingHome')
+    
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    # def post(self, request, *args, **kwargs):
+    #     data = {}
+    #     try:
+    #         action = request.POST['action']
+    #         if action == 'add':
+    #             form = self.get_form()
+    #             data = form.save()
+    #         else:
+    #             data['error'] = 'No ha ingresado a ninguna opción'
+    #     except Exception as e:
+    #         data['error'] = str(e)
+    #     return JsonResponse(data)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Creación de reservas'
+        return context
 
 
 class ClientsListView(ListView):
@@ -282,7 +310,7 @@ class RoomstypeCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Creación de Tipos de habitacionS'
+        context['title'] = 'Creación de Tipos de habitacion'
         return context
 
 class HotelCreateView(CreateView):

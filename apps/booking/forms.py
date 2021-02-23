@@ -91,16 +91,23 @@ class ClientForm(ModelForm):
             'Name': forms.TextInput(
                 attrs={
                     'placeholder': 'Nombre',
+                    'class': 'col-sm',
+                    'style': 'width: 50%',
                 }
+                
             ),
             'LastName': forms.TextInput(
                 attrs={
                     'placeholder': 'Apellidos',
+                    'class': 'col-sm',
+                    'style': 'width: 50%',
                 }
             ),
             'Rut': forms.TextInput(
                 attrs={
                     'placeholder': 'Rut',
+                    'class': 'col-sm',
+                    'style': 'width: 100%',
                 }
             ),
             'Address': forms.TextInput(
@@ -242,6 +249,10 @@ class RoomsTypeForm(ModelForm):
     class Meta:
         model = RoomsType
         fields = '__all__'
+        labels = {
+            'RoomsDescription': 'Que Tipo de Habitacion es?',
+
+        }
         widgets = {
             'RoomsDescription': forms.TextInput(
                 attrs={
