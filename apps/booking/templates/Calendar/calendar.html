@@ -1,542 +1,438 @@
-<!doctype html>
-<html lang="en">
- 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/libs/css/style.css">
-    <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link href='../assets/vendor/full-calendar/css/fullcalendar.css' rel='stylesheet' />
-    <link href='../assets/vendor/full-calendar/css/fullcalendar.print.css' rel='stylesheet' media='print' />
-</head>
+{% extends 'body.html' %}
+{% load static%}
 
-<body>
-    <!-- ============================================================== -->
-    <!-- main wrapper -->
-    <!-- ============================================================== -->
-    <div class="dashboard-main-wrapper">
-        <!-- ============================================================== -->
-        <!-- navbar -->
-        <!-- ============================================================== -->
-        <div class="dashboard-header">
-            <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="../index.html">Concept</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto navbar-right-top">
-                        <li class="nav-item">
-                            <div id="custom-search" class="top-search-bar">
-                                <input class="form-control" type="text" placeholder="Search..">
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown notification">
-                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
-                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
-                                <li>
-                                    <div class="notification-title"> Notification</div>
-                                    <div class="notification-list">
-                                        <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">
-John Abraham</span>is now following you
-                                                        <div class="notification-date">2 days ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown connection">
-                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
-                            <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
-                                <li class="connection-list">
-                                    <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/github.png" alt="" > <span>Github</span></a>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/dribbble.png" alt="" > <span>Dribbble</span></a>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/dropbox.png" alt="" > <span>Dropbox</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/bitbucket.png" alt=""> <span>Bitbucket</span></a>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/mail_chimp.png" alt="" ><span>Mail chimp</span></a>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/slack.png" alt="" > <span>Slack</span></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="conntection-footer"><a href="#">More</a></div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
-                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
-                                <div class="nav-user-info">
-                                    <h5 class="mb-0 text-white nav-user-name">
-John Abraham</h5>
-                                    <span class="status"></span><span class="ml-2">Available</span>
-                                </div>
-                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
-                            </div>
-                        </li>
-                    </ul>
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+<html class="no-js css-menubar" lang="es">
+  <head>
+  
+    <title>{{ title}}</title>
+    
+
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'Calendar/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'Calendar/css/bootstrap-extend.min.css'%}">
+    <link rel="stylesheet" href="{% static 'Calendar/assets/css/site.min.css'%}">
+    
+    <!-- Plugins -->
+    <link rel="stylesheet" href="{% static 'Calendar/vendor/animsition/animsition.css'%}">
+    <link rel="stylesheet" href="{% static 'Calendar/vendor/asscrollable/asScrollable.css'%}">
+    <link rel="stylesheet" href="{% static 'Calendar/vendor/switchery/switchery.css'%}">
+    <link rel="stylesheet" href="{% static 'Calendar/vendor/intro-js/introjs.css'%}">
+    <link rel="stylesheet" href="{% static 'Calendar/vendor/slidepanel/slidePanel.css'%}">
+    <link rel="stylesheet" href="{% static 'Calendar/vendor/flag-icon-css/flag-icon.css'%}">
+        <link rel="stylesheet" href="{% static 'Calendar/vendor/fullcalendar/fullcalendar.css'%}">
+        <link rel="stylesheet" href="{% static 'Calendar/vendor/bootstrap-datepicker/bootstrap-datepicker.css'%}">
+        <link rel="stylesheet" href="{% static 'Calendar/vendor/bootstrap-touchspin/bootstrap-touchspin.css'%}">
+        <link rel="stylesheet" href="{% static 'Calendar/vendor/jquery-selective/jquery-selective.css'%}">
+        <link rel="stylesheet" href="{% static 'Calendar/assets/examples/css/apps/calendar.css'%}">
+    
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="{% static 'Calendar/fonts/web-icons/web-icons.min.css'%}">
+    <link rel="stylesheet" href="{% static 'Calendar/fonts/brand-icons/brand-icons.min.css'%}">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+    
+    <!--[if lt IE 9]>
+    <script src="{% static 'Calendar/vendor/html5shiv/html5shiv.min.js'%}"></script>
+    <![endif]-->
+    
+    <!--[if lt IE 10]>
+    <script src="{% static 'Calendar/vendor/media-match/media.match.min.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/respond/respond.min.js'%}"></script>
+    <![endif]-->
+    
+    <!-- Scripts -->
+    <script src="{% static 'Calendar/vendor/breakpoints/breakpoints.js'%}"></script>
+    <script>
+      Breakpoints();
+    </script>
+  </head>
+  <body class="animsition app-calendar page-aside-left">
+    <!-- Page -->
+    <div class="page">
+      <div class="page-main">
+        <div class="calendar-container">
+          <div id="calendar">
+          </div>
+
+          <!--AddEvent Dialog -->
+          <div class="modal fade" id="addNewEvent" aria-hidden="true" aria-labelledby="addNewEvent"
+            role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-simple">
+              <form class="modal-content form-horizontal" action="#" method="post" role="form">
+                <div class="modal-header">
+                  <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+                  <h4 class="modal-title">New Event</h4>
                 </div>
-            </nav>
-        </div>
-        <!-- ============================================================== -->
-        <!-- end navbar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- left sidebar -->
-        <!-- ============================================================== -->
-        <div class="nav-left-sidebar sidebar-dark">
-            <div class="menu-list">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav flex-column">
-                            <li class="nav-divider">
-                                Menu
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
-                                <div id="submenu-1" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="index.html" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">E-Commerce</a>
-                                            <div id="submenu-1-2" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="../index.html">E Commerce Dashboard</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="../ecommerce-product.html">Product List</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="../ecommerce-product-single.html">Product Single</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="../ecommerce-product-checkout.html">Product Checkout</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="../dashboard-finance.html">Finance</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="../dashboard-sales.html">Sales</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-1" aria-controls="submenu-1-1">Infulencer</a>
-                                            <div id="submenu-1-1" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="../dashboard-influencer.html">Influencer</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="../influencer-finder.html">Influencer Finder</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="../influencer-profile.html">Influencer Profile</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>UI Elements</a>
-                                <div id="submenu-2" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cards.html">Cards <span class="badge badge-secondary">New</span></a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="general.html">General</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="carousel.html">Carousel</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="listgroup.html">List Group</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="typography.html">Typography</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="accordions.html">Accordions</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="tabs.html">Tabs</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Chart</a>
-                                <div id="submenu-3" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="chart-c3.html">C3 Charts</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="chart-chartist.html">Chartist Charts</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="chart-charts.html">Chart</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="chart-morris.html">Morris</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="chart-sparkline.html">Sparkline</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="chart-gauge.html">Guage</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-wpforms"></i>Forms</a>
-                                <div id="submenu-4" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="form-elements.html">Form Elements</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="form-validation.html">Parsely Validations</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="multiselect.html">Multiselect</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Tables</a>
-                                <div id="submenu-5" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="general-table.html">General Tables</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="data-tables.html">Data Tables</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-divider">
-                                Features
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-file"></i>Pages</a>
-                                <div id="submenu-6" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="invoice.html">Invoice</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="blank-page.html">Blank Page</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="blank-page-header.html">Blank Page Header</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="404-page.html">404 page</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="sign-up.html">Sign up Page</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="forgot-password.html">Forgot Password</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pricing.html">Pricing Tables</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="timeline.html">Timeline</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="calendar.html">Calendar</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="sortable-nestable-lists.html">Sortable/Nestable List</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="widgets.html">Widgets</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="media-object.html">Media Objects</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cropper-image.html">Cropper</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="color-picker.html">Color Picker</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7"><i class="fas fa-fw fa-inbox"></i>Apps <span class="badge badge-secondary">New</span></a>
-                                <div id="submenu-7" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="inbox.html">Inbox</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="email-details.html">Email Detail</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="email-compose.html">Email Compose</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="message-chat.html">Message Chat</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-fw fa-columns"></i>Icons</a>
-                                <div id="submenu-8" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="icon-fontawesome.html">FontAwesome Icons</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="icon-material.html">Material Icons</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="icon-simple-lineicon.html">Simpleline Icon</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="icon-themify.html">Themify Icon</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="icon-flag.html">Flag Icons</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="icon-weather.html">Weather Icon</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-9" aria-controls="submenu-9"><i class="fas fa-fw fa-map-marker-alt"></i>Maps</a>
-                                <div id="submenu-9" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="map-google.html">Google Maps</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="map-vector.html">Vector Maps</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10"><i class="fas fa-f fa-folder"></i>Menu Level</a>
-                                <div id="submenu-10" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Level 1</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11">Level 2</a>
-                                            <div id="submenu-11" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="#">Level 1</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="#">Level 2</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Level 3</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
+                <div class="modal-body">
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="ename">Name:</label>
+                    <div class="col-md-10">
+                      <input type="text" class="form-control" id="ename" name="ename">
                     </div>
-                </nav>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="starts">Starts:</label>
+                    <div class="col-md-10">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="starts" data-container="#addNewEvent"
+                          data-plugin="datepicker">
+                        <span class="input-group-addon">
+                          <i class="icon wb-calendar" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="ends">Ends:</label>
+                    <div class="col-md-10">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="ends" data-container="#addNewEvent"
+                          data-plugin="datepicker">
+                        <span class="input-group-addon">
+                          <i class="icon wb-calendar" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="repeats">Repeats:</label>
+                    <div class="col-md-10">
+                      <input type="text" class="form-control" id="repeats" name="repeats" data-plugin="TouchSpin"
+                        data-min="0" data-max="10" value="0" />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="form-control-label col-md-2">Color:</label>
+                    <div class="col-md-10">
+                      <ul class="color-selector">
+                        <li class="bg-blue-600">
+                          <input type="radio" checked name="eventColorChosen" id="eventColorChosen2">
+                          <label for="eventColorChosen2"></label>
+                        </li>
+                        <li class="bg-green-600">
+                          <input type="radio" name="eventColorChosen" id="eventColorChosen3">
+                          <label for="eventColorChosen3"></label>
+                        </li>
+                        <li class="bg-cyan-600">
+                          <input type="radio" name="eventColorChosen" id="eventColorChosen4">
+                          <label for="eventColorChosen4"></label>
+                        </li>
+                        <li class="bg-orange-600">
+                          <input type="radio" name="eventColorChosen" id="eventColorChosen5">
+                          <label for="eventColorChosen5"></label>
+                        </li>
+                        <li class="bg-red-600">
+                          <input type="radio" name="eventColorChosen" id="eventColorChosen6">
+                          <label for="eventColorChosen6"></label>
+                        </li>
+                        <li class="bg-blue-grey-600">
+                          <input type="radio" name="eventColorChosen" id="eventColorChosen7">
+                          <label for="eventColorChosen7"></label>
+                        </li>
+                        <li class="bg-purple-600">
+                          <input type="radio" name="eventColorChosen" id="eventColorChosen8">
+                          <label for="eventColorChosen8"></label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="people">People:</label>
+                    <div class="col-md-10">
+                      <select id="eventPeople" multiple="multiple" class="plugin-selective"></select>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div class="form-actions">
+                    <button class="btn btn-primary" data-dismiss="modal" type="button">Add this event</button>
+                    <a class="btn btn-sm btn-white" data-dismiss="modal" href="javascript:void(0)">Cancel</a>
+                  </div>
+                </div>
+              </form>
             </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- end left sidebar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- wrapper  -->
-        <!-- ============================================================== -->
-        <div class="dashboard-wrapper">
-            <div class="container-fluid  dashboard-content">
-                <!-- ============================================================== -->
-                <!-- pageheader -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="page-header">
-                            <h2 class="pageheader-title">Calendar </h2>
-                            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
-                            <div class="page-breadcrumb">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Pages</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Calendar</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
+          </div>
+          <!-- End AddEvent Dialog -->
+
+          <!-- Edit Dialog -->
+          <div class="modal fade" id="editNewEvent" aria-hidden="true" aria-labelledby="editNewEvent"
+            role="dialog" tabindex="-1" data-show="false">
+            <div class="modal-dialog modal-simple">
+              <form class="modal-content form-horizontal" action="#" method="post" role="form">
+                <div class="modal-header">
+                  <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+                  <h4 class="modal-title">Edit Event</h4>
                 </div>
-                <!-- ============================================================== -->
-                <!-- end pageheader -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- simple calendar -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div id='calendar1'></div>
-                            </div>
-                        </div>
+                <div class="modal-body">
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="editEname">Name:</label>
+                    <div class="col-md-10">
+                      <input type="text" class="form-control" id="editEname" name="editEname">
                     </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- end simple calendar -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- events calendar -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div id='wrap'>
-                                    <div id='external-events'>
-                                        <h4>Draggable Events</h4>
-                                        <div class='fc-event'>My Event 1</div>
-                                        <div class='fc-event bg-secondary border-secondary'>My Event 2</div>
-                                        <div class='fc-event bg-brand border-brand'>My Event 3</div>
-                                        <div class='fc-event bg-info border-info'>My Event 4</div>
-                                        <div class='fc-event bg-success border-success'>My Event 5</div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id='drop-remove'>
-                                            <label class="custom-control-label" for="drop-remove">Remove after drop</label>
-                                        </div>
-                                    </div>
-                                    <div id='calendar'></div>
-                                    <div style='clear:both'></div>
-                                </div>
-                            </div>
-                        </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="editStarts">Starts:</label>
+                    <div class="col-md-10">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="editStarts" name="editStarts" data-container="#editNewEvent"
+                          data-plugin="datepicker">
+                        <span class="input-group-addon">
+                          <i class="icon wb-calendar" aria-hidden="true"></i>
+                        </span>
+                      </div>
                     </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="editEnds">Ends:</label>
+                    <div class="col-md-10">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="editEnds" data-container="#editNewEvent"
+                          data-plugin="datepicker">
+                        <span class="input-group-addon">
+                          <i class="icon wb-calendar" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="editRepeats">Repeats:</label>
+                    <div class="col-md-10">
+                      <input type="text" class="form-control" id="editRepeats" name="repeats" data-plugin="TouchSpin"
+                        data-min="0" data-max="10" value="0" />
+                    </div>
+                  </div>
+                  <div class="form-group row" id="editColor">
+                    <label class="form-control-label col-md-2">Color:</label>
+                    <div class="col-md-10">
+                      <ul class="color-selector">
+                        <li class="bg-blue-600">
+                          <input type="radio" data-color="blue|600" name="colorChosen" id="editColorChosen2">
+                          <label for="editColorChosen2"></label>
+                        </li>
+                        <li class="bg-green-600">
+                          <input type="radio" data-color="green|600" name="colorChosen" id="editColorChosen3">
+                          <label for="editColorChosen3"></label>
+                        </li>
+                        <li class="bg-cyan-600">
+                          <input type="radio" data-color="cyan|600" name="colorChosen" id="editColorChosen4">
+                          <label for="editColorChosen4"></label>
+                        </li>
+                        <li class="bg-orange-600">
+                          <input type="radio" data-color="orange|600" name="colorChosen" id="editColorChosen5">
+                          <label for="editColorChosen4"></label>
+                        </li>
+                        <li class="bg-red-600">
+                          <input type="radio" data-color="red|600" name="colorChosen" id="editColorChosen6">
+                          <label for="editColorChosen6"></label>
+                        </li>
+                        <li class="bg-blue-grey-600">
+                          <input type="radio" data-color="blue-grey|600" name="colorChosen" id="editColorChosen7">
+                          <label for="editColorChosen7"></label>
+                        </li>
+                        <li class="bg-purple-600">
+                          <input type="radio" data-color="purple|600" name="colorChosen" id="editColorChosen8">
+                          <label for="editColorChosen8"></label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="editPeople">People:</label>
+                    <div class="col-md-10">
+                      <select id="editPeople" multiple="multiple" class="plugin-selective"></select>
+                    </div>
+                  </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- end events calendar -->
-                <!-- ============================================================== -->
+                <div class="modal-footer">
+                  <div class="form-actions">
+                    <button class="btn btn-primary" data-dismiss="modal" type="button">Save</button>
+                    <button class="btn btn-danger" data-dismiss="modal" type="button">Delete</button>
+                    <a class="btn btn-sm btn-white" data-dismiss="modal" href="javascript:void(0)">Cancel</a>
+                  </div>
+                </div>
+              </form>
             </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <div class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                        Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                        <div class="text-md-right footer-links d-none d-sm-block">
-                            <a href="javascript: void(0);">About</a>
-                            <a href="javascript: void(0);">Support</a>
-                            <a href="javascript: void(0);">Contact Us</a>
-                        </div>
-                    </div>
+          </div>
+          <!-- End EditEvent Dialog -->
+
+          <!--AddCalendar Dialog -->
+          <div class="modal fade" id="addNewCalendar" aria-hidden="true" aria-labelledby="addNewCalendar"
+            role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-simple">
+              <form class="modal-content form-horizontal" action="#" method="post" role="form">
+                <div class="modal-header">
+                  <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+                  <h4 class="modal-title">New Calendar</h4>
                 </div>
+                <div class="modal-body">
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="ename">Name:</label>
+                    <div class="col-md-10">
+                      <input type="text" class="form-control" id="ename" name="ename">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="form-control-label col-md-2">Color:</label>
+                    <div class="col-md-10">
+                      <ul class="color-selector">
+                        <li class="bg-blue-600">
+                          <input type="radio" checked name="colorChosen" id="colorChosen2">
+                          <label for="colorChosen2"></label>
+                        </li>
+                        <li class="bg-green-600">
+                          <input type="radio" name="colorChosen" id="colorChosen3">
+                          <label for="colorChosen3"></label>
+                        </li>
+                        <li class="bg-cyan-600">
+                          <input type="radio" name="colorChosen" id="colorChosen4">
+                          <label for="colorChosen4"></label>
+                        </li>
+                        <li class="bg-orange-600">
+                          <input type="radio" name="colorChosen" id="colorChosen5">
+                          <label for="colorChosen5"></label>
+                        </li>
+                        <li class="bg-red-600">
+                          <input type="radio" name="colorChosen" id="colorChosen6">
+                          <label for="colorChosen6"></label>
+                        </li>
+                        <li class="bg-blue-grey-600">
+                          <input type="radio" name="colorChosen" id="colorChosen7">
+                          <label for="colorChosen7"></label>
+                        </li>
+                        <li class="bg-purple-600">
+                          <input type="radio" name="colorChosen" id="colorChosen8">
+                          <label for="colorChosen8"></label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="people">People:</label>
+                    <div class="col-md-10">
+                      <select id="people" multiple="multiple" class="plugin-selective"></select>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div class="form-actions">
+                    <button class="btn btn-primary" data-dismiss="modal" type="button">Create</button>
+                    <a class="btn btn-sm btn-white" data-dismiss="modal" href="javascript:void(0)">Cancel</a>
+                  </div>
+                </div>
+              </form>
             </div>
+          </div>
+          <!-- End AddCalendar Dialog -->
         </div>
-        <!-- ============================================================== -->
-        <!-- end footer -->
-        <!-- ============================================================== -->
+      </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- end main wrapper -->
-    <!-- ============================================================== -->
-    <!-- Optional JavaScript -->
-    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <script src='../assets/vendor/full-calendar/js/moment.min.js'></script>
-    <script src='../assets/vendor/full-calendar/js/fullcalendar.js'></script>
-    <script src='../assets/vendor/full-calendar/js/jquery-ui.min.js'></script>
-    <script src='../assets/vendor/full-calendar/js/calendar.js'></script>
-    <script src="../assets/libs/js/main-js.js"></script>
-</body>
- 
+
+    <!-- Site Action Boton Crear evento-->
+    <div class="site-action" data-plugin="actionBtn">
+      <button type="button" class="site-action-toggle btn-raised btn btn-success btn-floating">
+        <i class="front-icon wb-plus animation-scale-up" aria-hidden="true"></i>
+        <i class="back-icon wb-trash animation-scale-up" aria-hidden="true"></i>
+      </button>
+    </div>
+    <!-- End Site Action -->
+
+    <!-- Add Calendar Form -->
+    <div class="modal fade" id="addNewCalendarForm" aria-hidden="true" aria-labelledby="addNewCalendarForm"
+      role="dialog" tabindex="-1">
+      <div class="modal-dialog modal-simple">
+        <form class="modal-content" action="#" method="post" role="form">
+          <div class="modal-header">
+            <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+            <h4 class="modal-title">Create New Calendar</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-control-label mb-15" for="name">Calendar name:</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Calendar name">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label mb-15" for="name">Choice people to your project:</label>
+              <select multiple="multiple" class="plugin-selective"></select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="form-actions">
+              <button class="btn btn-primary" data-dismiss="modal" type="button">Create</button>
+              <a class="btn btn-sm btn-white" data-dismiss="modal" href="javascript:void(0)">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- End Add Calendar Form -->
+
+
+
+    <!-- Core  -->
+    <script src="{% static 'Calendar/vendor/babel-external-helpers/babel-external-helpers.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/jquery/jquery.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/popper-js/umd/popper.min.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/bootstrap/bootstrap.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/animsition/animsition.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/mousewheel/jquery.mousewheel.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/asscrollbar/jquery-asScrollbar.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/asscrollable/jquery-asScrollable.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/ashoverscroll/jquery-asHoverScroll.js'%}"></script>
+    
+    <!-- Plugins -->
+    <script src="{% static 'Calendar/vendor/switchery/switchery.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/intro-js/intro.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/screenfull/screenfull.js'%}"></script>
+    <script src="{% static 'Calendar/vendor/slidepanel/jquery-slidePanel.js'%}"></script>
+        <script src="{% static 'Calendar/vendor/jquery-ui/jquery-ui.min.js'%}"></script>
+        <script src="{% static 'Calendar/vendor/moment/moment.min.js'%}"></script>
+        <script src="{% static 'Calendar/vendor/fullcalendar/fullcalendar.js'%}"></script>
+        <script src="{% static 'Calendar/vendor/jquery-selective/jquery-selective.min.js'%}"></script>
+        <script src="{% static 'Calendar/vendor/bootstrap-datepicker/bootstrap-datepicker.js'%}"></script>
+        <script src="{% static 'Calendar/vendor/bootstrap-touchspin/bootstrap-touchspin.min.js'%}"></script>
+        <script src="{% static 'Calendar/vendor/bootbox/bootbox.js'%}"></script>
+    
+    <!-- Scripts -->
+    <script src="{% static 'Calendar/js/Component.js'%}"></script>
+    <script src="{% static 'Calendar/js/Plugin.js'%}"></script>
+    <script src="{% static 'Calendar/js/Base.js'%}"></script>
+    <script src="{% static 'Calendar/js/Config.js'%}"></script>
+    
+    <script src="{% static 'Calendar/assets/js/Section/Menubar.js'%}"></script>
+    <script src="{% static 'Calendar/assets/js/Section/GridMenu.js'%}"></script>
+    <script src="{% static 'Calendar/assets/js/Section/Sidebar.js'%}"></script>
+    <script src="{% static 'Calendar/assets/js/Section/PageAside.js'%}"></script>
+    <script src="{% static 'Calendar/assets/js/Plugin/menu.js'%}"></script>
+    
+    <script src="{% static 'Calendar/js/config/colors.js'%}"></script>
+    <script src="{% static 'Calendar/assets/js/config/tour.js'%}"></script>
+    <script>Config.set('assets', '../../../assets');</script>
+    
+    <!-- Page -->
+    <script src="{% static 'Calendar/assets/js/Site.js'%}"></script>
+    <script src="{% static 'Calendar/js/Plugin/asscrollable.js'%}"></script>
+    <script src="{% static 'Calendar/js/Plugin/slidepanel.js'%}"></script>
+    <script src="{% static 'Calendar/js/Plugin/switchery.js'%}"></script>
+        <script src="{% static 'Calendar/js/Plugin/bootstrap-touchspin.js'%}"></script>
+        <script src="{% static 'Calendar/js/Plugin/bootstrap-datepicker.js'%}"></script>
+        <script src="{% static 'Calendar/js/Plugin/material.js'%}"></script>
+        <script src="{% static 'Calendar/js/Plugin/action-btn.js'%}"></script>
+        <script src="{% static 'Calendar/js/Plugin/editlist.js'%}"></script>
+        <script src="{% static 'Calendar/js/Plugin/bootbox.js'%}"></script>
+        <script src="{% static 'Calendar/assets/js/Site.js'%}"></script>
+        <script src="{% static 'Calendar/assets/js/App/Calendar.js'%}"></script>
+    
+        <script src="{% static 'Calendar/assets/examples/js/apps/calendar.js'%}"></script>
+  </body>
 </html>
+{% endblock content %}
+

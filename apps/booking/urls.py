@@ -15,6 +15,7 @@ urlpatterns = [
     path('addfeature/',FeatureCreateView.as_view(), name='featureCreate'),
     path('addroomstype/',RoomstypeCreateView.as_view(), name='roomstypeCreate'),
     path('addhotel/',HotelCreateView.as_view(), name='hotelCreate'),
+    path('calendar/',Calendar.as_view(), name='Calendar'),
     
 
 ]
