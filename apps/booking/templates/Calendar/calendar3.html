@@ -1,0 +1,56 @@
+{% extends 'body.html' %} 
+{% load static%}
+{% block head %}
+
+<title>{{title}}</title>
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.css"> {% endcomment %}
+
+
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.5.1/main.min.css' rel='stylesheet' />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.5.1/main.min.js'></script>
+
+{% endblock head %}
+
+
+
+{% block content %}
+
+    <div id='calendar'></div>
+
+
+
+{% endblock content %}
+
+{% block javascript %}
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            selectable : true,
+            selectMirror : true,
+            firstDay : 1,
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'resourceTimelineWeek,timeGridDay'
+            },
+            resources: [
+                        { id: 'a', title: 'Room A' , start: '2021-02-23T22:00:00-03:00'},
+                        { id: 'b', title: 'Room B' },
+                        { id: 'c', title: 'Room C' }
+            ],
+            dateClick: function(info) {
+            alert('clicked ' + info.dateStr + ' on resource ' + info.resource.id);
+            },
+            select: function(info) {
+            alert('selected ' + info.startStr + ' to ' + info.endStr + ' on resource ' + info.resource.id);
+            }
+        });
+        calendar.render();
+      });
+
+    </script>
+{% endblock javascript %}

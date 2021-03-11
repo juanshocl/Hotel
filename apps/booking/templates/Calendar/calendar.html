@@ -2,11 +2,6 @@
 {% load static%}
 
 {% block head %}
-{% endblock head %}
-
-{% block content %}
-<html class="no-js css-menubar" lang="es">
-  <head>
   
     <title>{{ title}}</title>
     
@@ -50,7 +45,11 @@
     <script>
       Breakpoints();
     </script>
-  </head>
+{% endblock head %}
+
+{% block content %}
+<html class="no-js css-menubar" lang="es">
+
   <body class="animsition app-calendar page-aside-left">
     <!-- Page -->
     <div class="page">

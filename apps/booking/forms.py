@@ -420,10 +420,10 @@ class PaymentForm(ModelForm):
 class BookingForm(ModelForm):
     class Meta:
         model = Booking
-        fields = '__all__'
+        fields = ['DateCheckIn','TimeCheckIn','DateCheckOut','TimeCheckOut','Prepaid','AubscriberMount','BookingClientId']
         labels = {
             'DateCheckIn': 'Fecha CheckIn',
-            'HotelsId': 'Hotel',
+            # 'HotelsId': 'Hotel',
             'BookingClientId': 'Cliente'
 
         }
@@ -458,12 +458,13 @@ class BookingForm(ModelForm):
                 }
             ),
             'Is_Active': forms.CheckboxInput(
-            ),
-            'HotelsId': forms.Select(
-                # attrs={
-                #     'placeholder': 'Monto pendiente',
-                # }
             )
+            # ,
+            # 'HotelsId': forms.Select(
+            #     # attrs={
+            #     #     'placeholder': 'Monto pendiente',
+            #     # }
+            # )
         }
 
 

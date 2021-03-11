@@ -41,7 +41,7 @@ class bookingHome(CreateView):
 class Calendar(ListView):
     model = Booking
     form_class = BookingForm
-    template_name = 'Calendar/calendar.html'
+    template_name = 'Calendar/calendar3.html'
     success_url = reverse_lazy('calendar')
     
 
@@ -145,13 +145,22 @@ class ClientsCreateView(CreateView):
 class BookingCreateView(CreateView):
     model = Booking
     form_class = BookingForm
-    template_name = 'Add.html'
+    template_name = 'Client/addclient.html'
     success_url = reverse_lazy('ClientList')
     
 
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
+    # def get_form(self, form_class = None):
+    #     form = super().get_form(form_class)
+
+    #     # Entramos al if si el usuario autenticado no es admin
+    #     if not self.request.user:
+    #         form.fields['status'].disabled = True # Desabilitamos el campo status
+    #         form.fields['status'].choices = [('r', 'Reservado')] # Le damos solo una opcion al campo status
+
+    #     return form
     # def post(self, request, *args, **kwargs):
     #     data = {}
     #     try:
