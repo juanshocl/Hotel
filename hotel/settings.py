@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #de Terceros
+    'widget_tweaks',
+    #locales
     'apps.home',
     'apps.registration',
     'apps.booking',

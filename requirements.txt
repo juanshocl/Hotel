@@ -1,6 +1,7 @@
 asgiref==3.2.10
 Django==3.1.2
 django-appconf==1.0.4
+django-widget-tweaks==1.4.8
 pytz==2020.1
 sqlparse==0.4.1
 Unipath==1.1

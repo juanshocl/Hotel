@@ -107,7 +107,7 @@ class ClientForm(ModelForm):
                 attrs={
                     'placeholder': 'Rut',
                     'class': 'col-sm',
-                    'style': 'width: 100%',
+
                 }
             ),
             'Address': forms.TextInput(
@@ -420,36 +420,41 @@ class PaymentForm(ModelForm):
 class BookingForm(ModelForm):
     class Meta:
         model = Booking
-        fields = ['DateCheckIn','TimeCheckIn','DateCheckOut','TimeCheckOut','Prepaid','AubscriberMount','BookingClientId']
+        fields = ['RoomsId','DateCheckIn','DateCheckOut','Prepaid','AubscriberMount','HotelsId','BookingClientId','no_of_guests','check_out','Is_Active']
         labels = {
             'DateCheckIn': 'Fecha CheckIn',
-            # 'HotelsId': 'Hotel',
-            'BookingClientId': 'Cliente'
+            'HotelsId': 'Hotel',
+            'BookingClientId': 'Cliente',
+            'no_of_guests': 'Numero de visitantes',
+            'check_out' : 'Check Out',
+            'Is_Active': 'Disponible'
 
         }
         widgets = {
+            'RoomsId': forms.Select(),
             'DateCheckIn': forms.SelectDateWidget(
-                # format='%d-%m-%Y',
+                # format='%d-%m-%y %H:%M',
                 # attrs={
                 #     'value': datetime.now().strftime('%d-%m-%Y'),
                 # }
             ),
-            'TimeCheckIn': forms.TimeInput(
-                attrs={
-                    'placeholder': 'Hora Checkin',
-                }
-            ),
+            # 'TimeCheckIn': forms.TimeInput(
+            #     attrs={
+            #         'placeholder': 'Hora Checkin',
+            #     }
+            # ),
             'DateCheckOut': forms.SelectDateWidget(
                 # format='%Y-%m-%d',
                 # attrs={
                 #     'value': datetime.now().strftime('%d-%m-%Y'),
                 # }
             ),
-            'TimeCheckOut': forms.TimeInput(
-                attrs={
-                    'placeholder': 'Hora CheckOut',
-                }
-            ),
+            'no_of_guests': forms.TextInput(),
+            # 'TimeCheckOut': forms.TimeInput(
+            #     attrs={
+            #         'placeholder': 'Hora CheckOut',
+            #     }
+            # ),
             'Prepaid': forms.CheckboxInput(
             ),
             'AubscriberMount': forms.TextInput(
@@ -458,14 +463,31 @@ class BookingForm(ModelForm):
                 }
             ),
             'Is_Active': forms.CheckboxInput(
+            ),
+            'BookingClientId': forms.Select(
+                attrs={
+                    'id': 'SelectBookingClientId'
+                }
+            ),
+            'check_out': forms.CheckboxInput(
+            ),
+            'HotelsId': forms.Select(
+                # attrs={
+                #     'placeholder': 'Monto pendiente',
+                # }
             )
-            # ,
-            # 'HotelsId': forms.Select(
-            #     # attrs={
-            #     #     'placeholder': 'Monto pendiente',
-            #     # }
-            # )
         }
+        # def save(self, commit=True):
+        #     data = {}
+        #     form = super()
+        #     try:
+        #         if form.is_valid:
+        #             form.save()
+        #         else:
+        #             data['error']  = form.errors
+        #     except Exception as e:
+        #         data['error'] = str(e)
+        #     return data
 
 
 

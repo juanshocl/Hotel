@@ -1,5 +1,8 @@
 from django.db import models
+from datetime import datetime,date,timedelta
 from apps.registration.models import UserProfile
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 import uuid
 
@@ -11,6 +14,7 @@ class Hotels(models.Model):
     Rooms = models.IntegerField(verbose_name="Habitaciones", default=None)
     Descriptions = models.CharField(max_length=50, verbose_name="Descripcion Empresa", default=None)
     UserId = models.ForeignKey('registration.UserProfile', on_delete=models.CASCADE, default=None)
+ # Staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.Name
@@ -43,8 +47,8 @@ class Rooms(models.Model):
     FeaturesId = models.ManyToManyField(Features)
     # FeaturesId = models.ForeignKey('Features', on_delete=models.CASCADE, default = None)
 
-    # def __str__(self):
-    #     return self.RoomsName +' / ' + str(self.Id)
+    def __str__(self):
+        return self.RoomsName
 
 # class Category(models.Model):
 #     Id = models.UUIDField(primary_key=True, verbose_name="ID",default=uuid.uuid4, editable=False)
@@ -72,7 +76,10 @@ class Client(models.Model):
     #BookingId = models.ForeignKey('Booking', on_delete=models.CASCADE, default=None) 
 
     def __str__(self):
-        return (self.Name +' '+self.LastName)
+        return self.get_full_name()
+
+    def get_full_name(self):
+        return '{} {} / {}'.format(self.Name, self.LastName, self.Rut)
 
 class Payment(models.Model):
     Id = models.UUIDField(primary_key=True, verbose_name="ID",default=uuid.uuid4, editable=False)
@@ -94,21 +101,38 @@ class Payment(models.Model):
 
 class Booking(models.Model):
     Id = models.UUIDField(primary_key=True, verbose_name="ID",default=uuid.uuid4, editable=False)
-    DateCheckIn = models.DateField(verbose_name="Fecha CheckIn",default=None)
-    TimeCheckIn = models.TimeField(verbose_name="Hora CheckIn",default=None)
-    DateCheckOut = models.DateField(verbose_name="Fecha CheckOut",default=None)
-    TimeCheckOut = models.TimeField(verbose_name="Hora CheckOut",default=None)
+    Created = models.DateTimeField(auto_now=True)
+    RoomsId = models.ForeignKey(Rooms, verbose_name="Cabaña reservada", on_delete=models.CASCADE,default=None)
+    #CreateBy = models.ForeignKey(UserProfile)
+    DateCheckIn = models.DateField(verbose_name="Check In", default=datetime.now())
+    # TimeCheckIn = models.TimeField(verbose_name="Hora CheckIn",default=None)
+    DateCheckOut = models.DateField(verbose_name="CheckOut",default=datetime.now() + timedelta(days=2))
+    # TimeCheckOut = models.TimeField(verbose_name="Hora CheckOut",default=None)
     #test = models.CharField(max_length = 50, default=None)
-    Prepaid = models.BooleanField(verbose_name="Prepagado",
-    default=None)
+    Prepaid = models.BooleanField(verbose_name="Prepagado",default=None)
+    no_of_guests=models.IntegerField(default=1)
     AubscriberMount = models.IntegerField(verbose_name="Monto Pendiente", default=None)
     #PaymentId = models.ForeignKey('Payment', on_delete=models.CASCADE, default=None)
-    Is_Active = models.BooleanField
-    BookingClientId = models.ForeignKey('Client', on_delete=models.CASCADE) 
-    HotelsId = models.ForeignKey('Hotels', on_delete=models.CASCADE, default=None, verbose_name="Hotel")
+    Is_Active = models.BooleanField(default=True)
+    BookingClientId = models.ForeignKey(Client, on_delete=models.CASCADE) 
+    HotelsId = models.ForeignKey(Hotels, on_delete=models.CASCADE, default=None, verbose_name="Hotel")
+    check_out=models.BooleanField(default=False)
 
     def __str__(self):
         return (self.BookingClientId.Name+' '+ self.BookingClientId.LastName + ' ChechIn + : ' + str(self.DateCheckIn) +' CheckOut - : '+ str(self.DateCheckOut))
+
+    # def charge(self):
+    #     if self.check_out:
+    #         if self.DateCheckIn==self.DateCheckOut:
+    #             return self.room.rate
+    #         else:
+    #             time_delta = self.DateCheckOut - self.DateCheckIn
+    #             total_time = time_delta.days
+    #             total_cost = total_time*self.RoomsId.RoomsPrice
+    #             # return total_cost
+    #             return total_cost
+    #     else:
+    #         return 'calculated when checked out'   
 
 # class Publication(models.Model):
 #     title = models.CharField(max_length=30)
@@ -128,3 +152,13 @@ class Booking(models.Model):
 
 #     def __str__(self):
 #         return self.headline
+
+# @receiver(post_save,sender=Booking)
+# def RType(sender, instance, created, **kwargs):
+#     room = instance.RoomsId
+#     if created:
+#         room.RoomsIs_active = False
+#     room.save()
+#     if instance.check_out ==True:
+#         room.RoomsIs_active=True
+#     room.save()   

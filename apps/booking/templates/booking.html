@@ -4,14 +4,19 @@
     <title>Bootstrap 4, from LayoutIt!</title>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Sweetalert2 -->
+    <script src="{% static 'plugins/sweetalert2-9.10.0/sweetalert2.all.min.js' %}"></script>
+
     <link href="{% static 'css/calendar.css'%}" rel="stylesheet">
 	<link href="{% static 'css/style.css'%}" rel="stylesheet">
+
 
 
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css'>
 	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.2/main.min.css'>
 
+    <script src="{% static 'js/charts.js' %}"></script>
 {% endblock head %}
 
 {% block content %}
@@ -25,47 +30,6 @@
 				<div class="col-md-2">
 				    {% comment %} <a id="modal-628383" href="#modal-container-628383" role="button" class="btn" data-toggle="modal">Ceacion de reserva</a> {% endcomment %}
                     <a class="btn btn-success" href="{% url 'BookingCreate' %}" role="button">Ceacion de reserva</a>
-					{% comment %} <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-container-628383">
-                    Ceacion de reserva
-                    </button> {% endcomment %}
-					<form method="post" enctype="multipart/form-data" >
-                    {% csrf_token %}
-                        <div class="modal fade" id="modal-container-628383" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="myModalLabel">
-                                            <i class="fas fa-plus"></i>
-                                            {{ title}}
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-										{{form.DateCheckIn.label}} {{form.DateCheckIn}}<br>
-										{{form.TimeCheckIn.label}} {{form.TimeCheckIn}}<br>
-										{{form.DateCheckOut.label}} {{form.DateCheckOut}}<br>
-										{{form.TimeCheckOut.label}} {{form.TimeCheckOut}}<br>
-										{{form.Prepaid.label}} {{form.Prepaid}}<br>
-										{{form.AubscriberMount.label}} {{form.AubscriberMount}}<br>
-										{{form.BookingClientId.label}} {{form.BookingClientId}}  <a class="related-widget-wrapper-link add-related" href="{% url 'ClientCreate' %}" title="Añadir otro cliente"><img src="/static/admin/img/icon-addlink.svg" alt="Añadir"></a><br>
-                                    </div>
-                                    <div class="modal-footer">
-
-                                        <button type="submit"class="btn btn-primary">
-                                            Guardar registro
-                                        </button>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                            Close
-                                        </button>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </form>
 
 				</div>
 				<div class="col-md-10">
